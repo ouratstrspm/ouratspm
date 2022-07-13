@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "445604746054",
+    "firebase_url": "https://bely-y-beto-e64c9-default-rtdb.firebaseio.com",
+    "project_id": "bely-y-beto-e64c9",
+    "storage_bucket": "bely-y-beto-e64c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445604746054:android:550dcc0a191cb034a84b47",
+        "android_client_info": {
+          "package_name": "com.MyBelycoloringBeto.BelyyBeto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445604746054-dmegev4a4920mmk546rm2mcahnuntsub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATzsu1C2Y2QBjFLIAnMh7m0sLNMAXmLhA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445604746054-dmegev4a4920mmk546rm2mcahnuntsub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
