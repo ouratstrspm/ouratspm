@@ -639,7 +639,11 @@ private void jenniedonahue(int num)
 
     public void freidalanders(int index)
     {
-        AdsManager.Instance.ShowAdMob(); 
+        if (AdsManager.Instance.isrev)
+        {
+            return;
+        }
+            AdsManager.Instance.ShowAdMob(); 
        
         PlayerPrefs.SetInt(bertiedelarosa, index);
         PlayerPrefs.Save();

@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
 
-public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
+public class AdsManager : MonoBehaviour 
 {
 
     public string privacyPolicyLink;
@@ -18,6 +18,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     public string adMobAppID = "";
     public string interstitalAdMobId = "";
     public string videoAdMobId = "";
+    public bool isrev = false;
 
     #endregion
     [Space(15)]
@@ -87,11 +88,14 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
                   applovinads20 = (string)snapshot.Child("applovinads20").Value;
                   applovinads50 = (string)snapshot.Child("applovinads50").Value;
                   isdone = (string)snapshot.Child("Data").Value;
+
                   //isadmob = true;
                   UnityEngine.Debug.Log("XReceived data sucsess isfbads " + isfbads.ToString());
                   UnityEngine.Debug.Log("XReceived data sucsess isApplovin " + isApplovin.ToString());
                   UnityEngine.Debug.Log("XReceived data sucsess isUnityads " + isUnityads.ToString());
                   onetime = true;
+                  isrev = (bool)snapshot.Child("isrev").Value;
+
               }
           }
           catch (Exception ex)
@@ -158,8 +162,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
 
             onetime = false;
             LoadApplovin();
-            InitializeAdsUnity();
-            LoadAdUnity();
+           
         }
     }
     private void LoadInterstitial()
@@ -300,8 +303,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
             if (MaxSdk.IsInterstitialReady(applovinads))
             {
                 MaxSdk.ShowInterstitial(applovinads);
+                Debug.Log("applovinadsDeff");
+
             }
-            
+
         }
         LoadInterstitial();
 
@@ -451,36 +456,22 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     //unity ads
     string gameId = "4742728";
     string _adUnitId = "Interstitial_Android";
-    public void InitializeAdsUnity()
-    {
-
-        Advertisement.Initialize(gameId, false, this);
-    }
+ 
 
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete.");
     }
 
-    public void OnInitializationFailed(UnityAdsInitializationError error, string message)
-    {
-        Debug.Log($"Unity Ads Initialization Failed: {error.ToString()} - {message}");
-    }
-
-    public void LoadAdUnity()
-    {
-        // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-        Debug.Log("Loading Ad: " + _adUnitId);
-        Advertisement.Load(_adUnitId, this);
-    }
+  
+  
 
     // Show the loaded content in the Ad Unit:
     public void ShowAdUnity()
     {
         // Note that if the ad content wasn't previously loaded, this method will fail
         Debug.Log("Showing Ad: " + _adUnitId);
-        Advertisement.Show(_adUnitId, this);
-    }
+     }
 
     // Implement Load Listener and Show Listener interface methods: 
     public void OnUnityAdsAdLoaded(string adUnitId)
@@ -488,22 +479,11 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         // Optionally execute code if the Ad Unit successfully loads content.
     }
 
-    public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
-    {
-        Debug.Log($"Error loading Ad Unit: {adUnitId} - {error.ToString()} - {message}");
-        // Optionally execute code if the Ad Unit fails to load, such as attempting to try again.
-    }
-
-    public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
-    {
-        Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
-        // Optionally execute code if the Ad Unit fails to show, such as loading another ad.
-    }
+   
 
     public void OnUnityAdsShowStart(string adUnitId) { }
     public void OnUnityAdsShowClick(string adUnitId) { }
-    public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) { }
-
+ 
 
     //admob
 

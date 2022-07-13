@@ -1,6 +1,6 @@
 name: Get Unity license activation file 🔐
 
-on: push
+on: workflow_dispatch
 
 jobs:
   requestManualActivationFile:
@@ -11,6 +11,8 @@ jobs:
 
       - uses: webbertakken/unity-request-manual-activation-file@v2
         id: getManualLicenseFile
+        with:
+          unityVersion: 2020.2.7f1
 
       - uses: actions/upload-artifact@v2
         with:

@@ -986,6 +986,8 @@ public class boydwhitley : MonoBehaviour
 
     public void OnHomeButtonClicked()
     {
+        AdsManager.Instance.ShowAdMob();
+
         arlinestrickland(jeannetteredmond);
 
         SceneManager.LoadScene("MainScene");
