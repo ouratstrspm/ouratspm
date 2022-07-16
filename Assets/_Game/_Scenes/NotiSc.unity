@@ -337,8 +337,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1317343301}
-        m_TargetAssemblyTypeName: LoadNoti, Assembly-CSharp
-        m_MethodName: goads
+        m_TargetAssemblyTypeName: frankiecrosby, Assembly-CSharp
+        m_MethodName: janburton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
